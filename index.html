@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced JavaScript Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Advanced JavaScript Examples</h1>
+
+    <h2>Asynchronous Programming with Promises and Async/Await</h2>
+    <pre>
+<code>
+function fetchData() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("Data fetched successfully!");
+        }, 1000);
+    });
+}
+
+async function fetchDataAsync() {
+    try {
+        const response = await fetchData();
+        console.log(response);  // Outputs: Data fetched successfully!
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+fetchDataAsync();
+</code>
+    </pre>
+
+    <h2>Closures</h2>
+    <pre>
+<code>
+function makeCounter() {
+    let count = 0;
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+const counter = makeCounter();
+console.log(counter());  // Outputs: 1
+console.log(counter());  // Outputs: 2
+</code>
+    </pre>
+
+    <h2>Prototypal Inheritance</h2>
+    <pre>
+<code>
+function Person(name) {
+    this.name = name;
+}
+
+Person.prototype.sayHello = function() {
+    console.log("Hello, my name is " + this.name);
+};
+
+const alice = new Person("Alice");
+alice.sayHello();  // Outputs: Hello, my name is Alice
+</code>
+    </pre>
+
+    <h2>Functional Programming</h2>
+    <h3>Higher-Order Functions</h3>
+    <pre>
+<code>
+const numbers = [1, 2, 3, 4, 5];
+
+const double = numbers.map(num => num * 2);
+console.log(double);  // Outputs: [2, 4, 6, 8, 10]
+</code>
+    </pre>
+
+    <h3>Currying</h3>
+    <pre>
+<code>
+function add(a) {
+    return function(b) {
+        return a + b;
+    };
+}
+
+const add5 = add(5);
+console.log(add5(3));  // Outputs: 8
+</code>
+    </pre>
+
+    <h2>Error Handling</h2>
+    <pre>
+<code>
+class CustomError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = "CustomError";
+    }
+}
+
+function riskyOperation() {
+    throw new CustomError("Something went wrong!");
+}
+
+try {
+    riskyOperation();
+} catch (error) {
+    if (error instanceof CustomError) {
+        console.error("Custom error caught: " + error.message);
+    } else {
+        console.error("Unknown error: " + error.message);
+    }
+}
+</code>
+    </pre>
+
+    <script>
+        // Asynchronous Programming with Promises and Async/Await
+        function fetchData() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("Data fetched successfully!");
+                }, 1000);
+            });
+        }
+
+        async function fetchDataAsync() {
+            try {
+                const response = await fetchData();
+                console.log(response);  // Outputs: Data fetched successfully!
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        fetchDataAsync();
+
+        // Closures
+        function makeCounter() {
+            let count = 0;
+            return function() {
+                count++;
+                return count;
+            };
+        }
+
+        const counter = makeCounter();
+        console.log(counter());  // Outputs: 1
+        console.log(counter());  // Outputs: 2
+
+        // Prototypal Inheritance
+        function Person(name) {
+            this.name = name;
+        }
+
+        Person.prototype.sayHello = function() {
+            console.log("Hello, my name is " + this.name);
+        };
+
+        const alice = new Person("Alice");
+        alice.sayHello();  // Outputs: Hello, my name is Alice
+
+        // Functional Programming
+        const numbers = [1, 2, 3, 4, 5];
+
+        const double = numbers.map(num => num * 2);
+        console.log(double);  // Outputs: [2, 4, 6, 8, 10]
+
+        function add(a) {
+            return function(b) {
+                return a + b;
+            };
+        }
+
+        const add5 = add(5);
+        console.log(add5(3));  // Outputs: 8
+
+        // Error Handling
+        class CustomError extends Error {
+            constructor(message) {
+                super(message);
+                this.name = "CustomError";
+            }
+        }
+
+        function riskyOperation() {
+            throw new CustomError("Something went wrong!");
+        }
+
+        try {
+            riskyOperation();
+        } catch (error) {
+            if (error instanceof CustomError) {
+                console.error("Custom error caught: " + error.message);
+            } else {
+                console.error("Unknown error: " + error.message);
+            }
+        }
+    </script>
+</body>
+</html>
